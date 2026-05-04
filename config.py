@@ -14,3 +14,11 @@ ACTIVE_ROSTER = BASE_DIR / "data" / "roster" / "active_roster.csv"
 
 # Logo path
 LOGO_PATH = BASE_DIR / "assets" / "bangers_logo.png"
+
+# Season order 
+SEASON_ORDER = [
+    "Winter2023", "Spring2023", "Summer2023", "Fall2023",
+    "Winter2024", "Spring2024", "Summer2024", "Fall2024",
+    "Winter2025", "Spring2025", "Summer2025", "Fall2025",
+    "Winter2026", "Spring2026", "Summer2026", "Fall2026",
+]
