@@ -1,5 +1,7 @@
 from pathlib import Path
 
+STAT_SHEET_URL = 'https://docs.google.com/spreadsheets/d/10y8Y4PVAjfT8II6cI8BQqh3Qgqtajkra12OB4ALkzMw/export?format=csv&gid=225791941'
+
 # Current Season
 CURRENT_SEASON = "Spring2026"
 LAST_SEASON = 'Winter2026'
