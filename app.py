@@ -93,7 +93,6 @@ with tab_player_profile:
         k3.metric("OBP", f"{p['OBP']:.3f}", f"#{p['OBP_Rank']} of {total_players}", delta_color="off")
         k4.metric("Hits", int(p["H"]), f"#{p['H_Rank']} of {total_players}", delta_color="off")
 
-
     player_history = season_by_season[season_by_season["PlayerName"] == player].copy()
     player_history["Season"] = pd.Categorical(
         player_history["Season"],
