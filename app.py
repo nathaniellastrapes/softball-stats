@@ -11,7 +11,11 @@ st.set_page_config(page_title="Bangers Stats", layout="wide")
 
 
 st.image(LOGO_PATH, width=200)
+if st.button("🔄 Refresh data"):
+    st.cache_data.clear()
+    st.rerun()
 st.title("Bangers Softball Stats")
+
 
 
 
@@ -116,3 +120,5 @@ with tab_player_profile:
             "OBP": st.column_config.NumberColumn(format="%.3f"),
         },
     )
+
+    
