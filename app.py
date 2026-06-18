@@ -44,18 +44,9 @@ career_summary["GP_Rank"] = career_summary["Games_Played"].rank(ascending=False,
 
 
 # Tabs
-tab_batting_order, tab_season_stats, tab_career_stats, tab_player_profile = st.tabs([
-    "Batting Order", "Season Stats", "Career Stats", "Player Profile"
+tab_season_stats, tab_career_stats, tab_player_profile, tab_batting_order = st.tabs([
+    "Season Stats", "Career Stats", "Player Profile", "Batting Order"
 ])
-
-with tab_batting_order:
-    st.subheader("Batting Order")
-    st.caption(f"Returning players sorted by {LAST_SEASON} AVG. New players at the bottom.")
-    st.dataframe(
-        batting_order,
-        use_container_width=True,
-        hide_index=True,
-    )
 
 with tab_season_stats:
     st.subheader("Season Stats")
@@ -106,10 +97,14 @@ with tab_player_profile:
         ordered=True,
     )
 
+    career_avg = p["AVG"]
+
+    player_history["Career AVG"] = career_avg
+
     player_history = player_history.sort_values("Season")
     player_history.drop("PlayerName",axis=1, inplace=True)
 
-    st.line_chart(player_history, x="Season", y="AVG")
+    st.line_chart(player_history, x="Season", y=["AVG", "Career AVG"])
     
     st.dataframe(
         player_history,
@@ -122,5 +117,14 @@ with tab_player_profile:
             "OBP": st.column_config.NumberColumn(format="%.3f"),
         },
     )
+
+    with tab_batting_order:
+        st.subheader("Batting Order")
+        st.caption(f"Returning players sorted by {LAST_SEASON} AVG. New players at the bottom.")
+        st.dataframe(
+            batting_order,
+            use_container_width=True,
+            hide_index=True,
+        )
 
     

@@ -16,4 +16,4 @@ def build_batting_order(stats_df, roster_df):
     new_players = pd.DataFrame({"PlayerName": new_names})
 
     order = pd.concat([vets, new_players], ignore_index=True)
-    return order[['PlayerName', 'AVG', 'OBP']]
+    return order[['PlayerName']]
