@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    database: bangers-warehouse
+    schema: raw
+    tables:
+      - name: stat_log
+      - name: game_log
+      - name: player_info
+      - name: payment_ledger
+      - name: season_costs
+      - name: season_roster
