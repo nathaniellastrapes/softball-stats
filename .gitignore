@@ -1,28 +1,5 @@
-cat > .gitignore << 'EOF'
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.Python
 venv/
-env/
-.venv/
-
-# Streamlit
-.streamlit/secrets.toml
-
-# IDE
-.vscode/
-.idea/
-*.swp
-.DS_Store
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Data — uncomment if your raw data shouldn't be in git
-# data/raw/
-
-# Environment
-.env
-EOF
+target/
+dbt_packages/
+logs/
+.user.yml
