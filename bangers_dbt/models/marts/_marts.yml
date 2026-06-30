@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: dim_player
+    description: "One row per player. Stable descriptor attributes."
+    columns:
+      - name: player_name
+        description: "Natural key. Unique identifier for each player."
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_player_game
+    description: "Atomic fact. One row per player per game."
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - season_id
+              - game
+              - player_name
+    columns:
+      - name: player_name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_player')
+                field: player_name
+
+  - name: fct_player_season
+    description: "Season stats per player."
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - season_id
+              - player_name
+    columns:
+      - name: player_name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_player')
+                field: player_name
+      - name: ab
+        data_tests:
+          - not_null
+
+  - name: fct_player_career
+    description: "All-time stats per player."
+    columns:
+      - name: player_name
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_player')
+                field: player_name
+
+  - name: fct_player_season_charges
+    description: "Itemized fees owed per player per season."
+    columns:
+      - name: player_name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_player')
+                field: player_name
+      - name: season_total_owed
+        data_tests:
+          - not_null
+
+  - name: fct_player_balance
+    description: "Lifetime balance per player."
+    columns:
+      - name: player_name
+        data_tests:
+          - unique
+          - not_null
+      - name: balance
+        data_tests:
+          - not_null
