@@ -1,6 +1,7 @@
 with career_stats as (
     select 
         player_name,
+        count(*) as gp,
         sum(ab) as ab,
         sum(h) as h,
         sum(bb) as bb,
@@ -12,6 +13,7 @@ with career_stats as (
 
 select
     player_name,
+    gp,
     ab, 
     h, 
     bb, 
