@@ -2,6 +2,7 @@ with season_stats as (
     select 
         season_id,
         player_name,
+        count(*) as gp,
         sum(ab) as ab,
         sum(h) as h,
         sum(bb) as bb,
@@ -14,7 +15,8 @@ with season_stats as (
 
 select
     season_id,
-    player_name,
+    player_name,    
+    gp,
     ab, 
     h, 
     bb, 
