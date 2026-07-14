@@ -3,14 +3,6 @@ import streamlit as st
 from pathlib import Path
 from config import BASE_DIR
 
-STAT_COLUMN_CONFIG = {
-    "PlayerName": "Player Name",
-    "Games_Played": "Games Played",
-    "AVG": st.column_config.NumberColumn(format="%.3f"),
-    "OBP": st.column_config.NumberColumn(format="%.3f"),
-}
-
-
 PLAYER_PHOTO_DIR = BASE_DIR / "assets" / "players"
 PLACEHOLDER_PHOTO = PLAYER_PHOTO_DIR / "_placeholder.jpg"
 
@@ -25,3 +17,15 @@ def player_photo_path(player_name):
     if photo_png.exists():
         return str(photo_png)
     return str(PLACEHOLDER_PHOTO)
+
+STAT_COLUMN_CONFIG = {
+    "season_id": "Season",
+    "player_name": "Player Name",
+    "gp": "Games Played",
+    "ab": "AB",
+    "h": "H",
+    "bb": "BB",
+    "sf": "SF",
+    "avg": st.column_config.NumberColumn("AVG", format="%.3f"),
+    "obp": st.column_config.NumberColumn("OBP", format="%.3f"),
+}
